@@ -9,10 +9,11 @@ class DaftarPoli extends Model
     protected $table = 'daftar_poli';
 
     protected $fillable = [
-        'id_jadwal',
-        'id_pasien',
-        'keluhan',
-        'no_antrian'
+    'id_jadwal',
+    'id_pasien',
+    'keluhan',
+    'no_antrian',
+    'status'
     ];
 
     public function pasien()
@@ -27,6 +28,6 @@ class DaftarPoli extends Model
 
     public function periksas()
     {
-        return $this->hasMany(Periksa::class, 'id_daftar_poli');
+        return $this->hasOne(Periksa::class, 'id_daftar_poli');
     }
 }
