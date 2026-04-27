@@ -2,18 +2,17 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
-use App\Http\Controllers\Admin\PoliController;
 use App\Http\Controllers\Admin\DokterController;
 use App\Http\Controllers\Admin\PasienController;
 use App\Http\Controllers\Admin\ObatController;
 use App\Http\Controllers\Dokter\PeriksaController;
 use App\Http\Controllers\Pasien\PasienDashboardController;
 use App\Http\Controllers\Pasien\RiwayatController;
-
-// | Web Routes
+use App\Http\Controllers\Dokter\JadwalPeriksaController;
+use App\Http\Controllers\Pasien\PoliController as PasienPoliController;
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect()->route('login');
 });
 
 Route::get('/login', [AuthController::class, 'showLogin'])->name('login');
@@ -49,21 +48,29 @@ Route::middleware(['auth', 'role:dokter'])
         Route::get('/dashboard', function () {
             return view('dokter.dashboard');
         })->name('dokter.dashboard');
-
-        Route::post('/periksa/store', [PeriksaController::class, 'store'])
-            ->name('periksa.store');
+        Route::resource('jadwal-periksa', JadwalPeriksaController::class);
     });
 
     // Routes untuk pasien
+Route::middleware(['auth', 'role:pasien'])
+    ->prefix('pasien')
+    ->group(function () {
 
-Route::middleware(['auth'])->group(function () {
-
-    Route::get('/pasien/dashboard', [PasienDashboardController::class, 'index'])
+    Route::get('/dashboard', [PasienDashboardController::class, 'index'])
         ->name('pasien.dashboard');
 
-    Route::get('/pasien/riwayat', [RiwayatController::class, 'index'])
+    Route::get('/riwayat', [RiwayatController::class, 'index'])
         ->name('pasien.riwayat');
 
-    Route::get('/pasien/riwayat/{id}', [RiwayatController::class, 'show'])
+    Route::get('/riwayat/{id}', [RiwayatController::class, 'show'])
         ->name('pasien.riwayat.detail');
+
+    Route::get('/pasien/antrian/data', [PasienDashboardController::class, 'getAntrian'])
+        ->name('pasien.antrian.data');
+
+    Route::get('/daftar', [PasienPoliController::class, 'get'])
+        ->name('pasien.daftar');
+
+    Route::post('/daftar', [PasienPoliController::class, 'submit'])
+        ->name('pasien.daftar.submit');
 });

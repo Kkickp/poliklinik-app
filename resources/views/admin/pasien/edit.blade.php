@@ -1,4 +1,4 @@
-<x-layouts.app title="Edit Pasien">
+<!-- <x-layouts.app title="Edit Pasien">
 
     {{-- Header --}}
     <div class="flex items-center gap-3 mb-6">
@@ -138,4 +138,4 @@
         </div>
     </div>
 
-</x-layouts.app>
+</x-layouts.app> -->

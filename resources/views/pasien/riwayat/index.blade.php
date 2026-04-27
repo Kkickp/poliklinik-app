@@ -23,14 +23,15 @@
                 <td>{{ $item->created_at->format('d-m-Y') }}</td>
                 <td>{{ $item->no_antrian }}</td>
                 <td>
-                    @if($item->periksas->count() > 0)
+                    @if($item->periksas)
                         <span class="badge bg-success">Selesai</span>
                     @else
                         <span class="badge bg-warning">Menunggu</span>
                     @endif
                 </td>
+
                 <td>
-                    @if($item->periksas->count() > 0)
+                    @if($item->periksas)
                         <a href="{{ route('pasien.riwayat.detail', $item->id) }}" class="btn btn-sm btn-primary">
                             Detail
                         </a>

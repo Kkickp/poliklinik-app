@@ -48,6 +48,7 @@
     /* CONTENT SCROLL */
     .main-scroll {
         @apply flex-1 p-[28px];
+        overflow-y: auto;
     }
 
     /* MOBILE */
@@ -74,5 +75,15 @@
 
     .btn-primary-gradient:hover {
         background: linear-gradient(135deg, #162156, #1e2d6b);
+    }
+
+    .main-scroll > div {
+        display: flex;
+        justify-content: center;
+    }
+
+    .main-scroll .card {
+        width: 100%;
+        max-width: 500px;
     }
 }

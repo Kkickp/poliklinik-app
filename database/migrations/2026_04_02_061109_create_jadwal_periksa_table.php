@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('jadwal_periksa', function (Blueprint $table) {
+        Schema::create('jadwal-periksa', function (Blueprint $table) {
             $table->id();
             $table->foreignId('id_dokter')->constrained('users')->cascadeOnDelete();
             $table->enum('hari', ['Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu', 'Minggu']);
@@ -26,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('jadwal_periksa');
+        Schema::dropIfExists('jadwal-periksa');
     }
 };

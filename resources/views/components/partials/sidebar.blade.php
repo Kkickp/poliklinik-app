@@ -96,6 +96,12 @@
                 <i class="fas fa-clock-rotate-left w-4 text-center"></i>
                 Riwayat Pendaftaran
             </a>
+
+            <a href="{{ route('pasien.daftar') }}"
+                class="{{ $baseLink }} {{ request()->routeIs('pasien.daftar') ? $active : $inactive }}">
+                <i class="fas fa-clipboard-list w-4 text-center"></i>
+                Pendaftaran Periksa
+            </a>
         </div>
         @endif
 
@@ -118,6 +124,11 @@
                 class="{{ $baseLink }} {{ request()->routeIs('dokter.*') ? $active : $inactive }}">
                 <i class="fas fa-user-md w-4 text-center"></i>
                 Manajemen Dokter
+            </a>
+            <a href="{{ route('jadwal-periksa.index') }}"
+                class="{{ $baseLink }} {{ request()->routeIs('jadwal-periksa.*') ? $active : $inactive }}">
+                <i class="fas fa-calendar-check w-4 text-center"></i>
+                Jadwal Periksa
             </a>
         </div>
         @endif
