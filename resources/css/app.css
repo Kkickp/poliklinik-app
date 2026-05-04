@@ -76,14 +76,4 @@
     .btn-primary-gradient:hover {
         background: linear-gradient(135deg, #162156, #1e2d6b);
     }
-
-    .main-scroll > div {
-        display: flex;
-        justify-content: center;
-    }
-
-    .main-scroll .card {
-        width: 100%;
-        max-width: 500px;
-    }
 }
